@@ -1,0 +1,8 @@
+# aarch64-only (Raspberry Pi HAOS). frp is pinned + checksum-verified in the Dockerfile.
+build_from:
+  aarch64: alpine:3.20
+args:
+  FRP_VERSION: "0.61.1"
+  FRP_ARCH: "arm64"
+  # sha256 of frp_0.61.1_linux_arm64.tar.gz from the official frp_sha256_checksums.txt.
+  FRP_SHA256: "af6366f2b43920ebfe6235dba6060770399ed1fb18601e5818552bd46a7621f8"
