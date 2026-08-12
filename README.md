@@ -41,15 +41,12 @@ third-party frpc add-on so the client-side code is fully under your control.
    - `proxy_name` — `ha-<client>` (must be unique across all clients)
    - `local_port` — `8123`
 4. **Start** (enable *Start on boot* + *Watchdog*).
-5. Add to the client's `configuration.yaml` and restart HA:
-   ```yaml
-   http:
-     use_x_forwarded_for: true
-     trusted_proxies:
-       - 127.0.0.1
-       - ::1
-   external_url: "https://<client>.welltechnically.co.uk"
-   ```
+5. Trust the proxy in Home Assistant. Recent HA manages HTTP in the UI (a `http:` block in
+   `configuration.yaml` is ignored):
+   - **Settings → System → Network → "HTTP server"**: enable **Trust X-Forwarded-For** and
+     add `127.0.0.1` (and `::1`) to **Trusted proxies**. Set the external URL there too.
+   - Older HA: use a `configuration.yaml` `http:` block with `use_x_forwarded_for: true` and
+     `trusted_proxies: [127.0.0.1, ::1]`, plus `homeassistant: external_url: …`.
 
 ## Notes
 

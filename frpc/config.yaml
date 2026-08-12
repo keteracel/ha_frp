@@ -1,6 +1,6 @@
 name: WellTechnically FRP Client
 description: Secure outbound tunnel from this Home Assistant to the WellTechnically reverse proxy.
-version: "1.0.0"
+version: "1.1.0"
 slug: frpc
 url: https://github.com/keteracel/ha_frp
 init: false
@@ -15,6 +15,7 @@ options:
   server_addr: ""
   server_port: 7000
   token: ""
+  client_secret: ""
   custom_domain: ""
   proxy_name: ""
   local_port: 8123
@@ -22,6 +23,7 @@ schema:
   server_addr: str
   server_port: port
   token: password
+  client_secret: password
   custom_domain: str
   proxy_name: str
   local_port: port
