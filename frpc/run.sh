@@ -34,6 +34,10 @@ CONF=/tmp/frpc.toml
   echo "auth.method = \"token\""
   echo "auth.token = \"${TOKEN}\""
   echo "transport.tls.enable = true"
+  # Keep retrying if the first login fails (proxy unreachable at boot, router restart,
+  # proxy redeploy). frp's default exits instead, leaving the tunnel down until someone
+  # restarts the app by hand.
+  echo "loginFailExit = false"
   echo "log.to = \"console\""
   echo "log.level = \"info\""
   if [ -n "$CLIENT_SECRET" ] && [ "$CLIENT_SECRET" != "null" ]; then
